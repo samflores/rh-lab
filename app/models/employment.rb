@@ -15,12 +15,14 @@ class Employment < ApplicationRecord
 
   validate :only_one_active_employment
 
+  scope :active, -> { where(ends_on: nil) }
+
   enum :reason, { hire: 1, promote: 10, restructure: 20 },
        default: :hire
 
   def only_one_active_employment
     return if ends_on.present?
-    return unless Employment.where(ends_on: nil, employee_id: id).exists?
+    return unless Employment.where(ends_on: nil, id: employee_id).exists?
 
     errors.add(:ends_on, "can't be blank if there's already an active employment")
   end
