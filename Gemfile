@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.0.2'
 
 gem 'bootsnap', require: false
 gem 'importmap-rails'
@@ -22,6 +22,8 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 group :development do
@@ -38,4 +40,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'shoulda-matchers', '~> 5.0'
 end
