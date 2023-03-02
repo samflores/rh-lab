@@ -13,4 +13,12 @@ class Employee < ApplicationRecord
            foreign_key: :manager_id
 
   validates :name, presence: true
+
+  def active_registration 
+    employments.active.first&.registration 
+  end
+
+  def active_department
+    departments.active.first&.name
+  end 
 end
