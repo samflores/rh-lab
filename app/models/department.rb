@@ -6,4 +6,6 @@ class Department < ApplicationRecord
   has_many :employees, through: :employments
 
   validates :name, presence: true
+
+  scope :active, -> { where.not(name: nil) }
 end
